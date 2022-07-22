@@ -1,18 +1,21 @@
 class Student
-     
+     @add=10
     def initialize(id, name, age)
         @id=id
         @name=name
         @age=age
         @@count = 122
-        @a=33;
+        @a=33
     end
+    def self.add
+        @add 
+    end       
     def display_detail()
         
         puts "Student id:#@id"
         puts "Student name:#@name"
         puts "Student age:#@age"
-        puts("instance :#{@a}")
+        puts("instance :#@add")
     end 
     
     def display_count()
@@ -26,6 +29,8 @@ a.display_detail();
 b.display_detail();
 c.display_detail();
 c.display_count();
+x=c.add
+puts("acnc"+x)
 
 
 
