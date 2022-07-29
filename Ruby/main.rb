@@ -1,5 +1,5 @@
 $LOAD_PATH << '.'
-require_relative 'sign_up'
+require 'sign_up'
 sign=SignUp.new
 while 1
   puts "  Welcome "
@@ -11,7 +11,8 @@ while 1
   case answer
    when 1
     sign.sign_up
-    
+   when 2
+    login
     break
   end
 end

@@ -1,4 +1,5 @@
 require 'csv'
+require 'byebug'
 module SignUpModule
 
   def nameValid(first_name)
@@ -45,8 +46,8 @@ class SignUp
  
   def sign_up
     puts"Enter firstName"
-    first_Name = gets.chomp
-    if nameValid(first_Name)
+    @first_Name = gets.chomp
+    if nameValid(@first_Name)
       puts "valid"
     else
       puts "invalid"  
@@ -54,31 +55,31 @@ class SignUp
     
   
     puts"Enter lastName"
-    last_Name = gets.chomp
-    if nameValid(last_Name)
+    @last_Name = gets.chomp
+    if nameValid(@last_Name)
       puts "valid"
     else
       puts "invalid"  
     end 
     
     puts"Enter email"
-    email = gets.chomp
-    if emailValid(email)
+    @email = gets.chomp
+    if emailValid(@email)
       puts "valid"
     else
       puts "invalid"  
     end  
 
     puts"Enter phone"
-    phone = gets.chomp
-    if numberValid(phone)
+    @phone = gets.chomp
+    if numberValid(@phone)
       puts "valid"
     else
       puts "invalid"  
     end 
     
     puts"Enter role"
-    role = gets.chomp
+    @role = gets.chomp
     if nameValid(role)
       puts "valid"
     else
@@ -86,7 +87,7 @@ class SignUp
     end 
 
     puts"Enter salary"
-    salary = gets.chomp
+    @salary = gets.chomp
     if numberValid(salary)
       puts "valid"
     else
@@ -94,25 +95,21 @@ class SignUp
     end 
     
     puts"Enter password"
-    password = gets.chomp
+    @password = gets.chomp
     if passwordValid(password)
       puts "valid"
     else
       puts "invalid"  
     end  
-    save
-  end
-
-
-  def save
-  
-      CSV.open(data, 'w+') do |csv|
-      csv << ["first_Name","last_name", "email","phone","role","salary","password"] #if csv.count < 1
-      csv << ["#{@first_Name}","#{@last_name}","#{@email}","#{@phone}","#{@role}","#{@salary}","#{@password}"]
-      end 
+    
   end
   
 end
+a=SignUp.new
+CSV.open('data.csv',"a+")do |csv|
+      csv << ["first_Name","last_name", "email","phone","role","salary","password"] if csv.count < 1
+      csv << ["#{@first_Name}","#{@last_name}","#{@email}","#{@phone}","#{@role}","#{@salary}","#{@password}"]
+end 
 
 
 

@@ -7,8 +7,8 @@ class Employee
   def initialize(first_name, last_name, person_id = rand(1000..9999))
     @first_name = first_name
     @last_name  = last_name
-    @person_id  = emp_id
-    @filename   = "#{emp_id}-file.csv"
+    @person_id  = person_id
+    @filename   = "#{person_id}-file.csv"
   end
 
   def self.filename(person_id)
@@ -43,7 +43,7 @@ class Employee
     end
   end
 
-  def self.destroy(emp_id)
+  def self.destroy(person_id)
 
     filename = Person.filename person_id
 
@@ -77,7 +77,7 @@ class Employee
       puts " Cannot save file."
     end
 
-    save_file = CSV.open(filename, 'w') do |csv|
+    save_file = CSV.open(filename, 'a+') do |csv|
       csv << [first_name, last_name]
     end
 
