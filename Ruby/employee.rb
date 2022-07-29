@@ -77,7 +77,7 @@ class Employee
       puts " Cannot save file."
     end
 
-    save_file = CSV.open(filename, 'w') do |csv|
+    save_file = CSV.open(filename, 'w+') do |csv|
       csv << [first_name, last_name]
     end
 

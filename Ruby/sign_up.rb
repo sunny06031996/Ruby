@@ -1,4 +1,5 @@
 require 'csv'
+
 module SignUpModule
 
   def nameValid(first_name)
@@ -102,17 +103,14 @@ class SignUp
     end  
     save
   end
-
-
-  def save
-  
-      CSV.open(data, 'w+') do |csv|
-      csv << ["first_Name","last_name", "email","phone","role","salary","password"] #if csv.count < 1
-      csv << ["#{@first_Name}","#{@last_name}","#{@email}","#{@phone}","#{@role}","#{@salary}","#{@password}"]
-      end 
-  end
-  
+ 
 end
+CSV.open(data.csv, 'a+') do |csv|
+  csv << ["first_Name","last_name", "email","phone","role","salary","password"]
+  csv << ["#{@first_Name}","#{@last_name}","#{@email}","#{@phone}","#{@role}","#{@salary}","#{@password}"]
+  byebug
+  end 
+
 
 
 
