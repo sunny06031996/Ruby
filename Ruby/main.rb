@@ -1,6 +1,10 @@
 $LOAD_PATH << '.'
-require_relative 'sign_up'
+require 'sign_up'
+require 'login_module'
 sign=SignUp.new
+login=LoginClass.new
+
+
 while 1
   puts "  Welcome "
   puts "press 1 for Sign up"
@@ -11,8 +15,13 @@ while 1
   case answer
    when 1
     sign.sign_up
-    
+    sign.store_data
+   when 2
+   
+    login.login_hr
+
     break
   end
 end
+
 
