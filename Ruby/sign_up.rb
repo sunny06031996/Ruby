@@ -16,7 +16,7 @@ module SignUpModule
   end  
   
   def passwordValid(password)
-    if password =~/^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/
+    if password =~/^[a-zA-Z\-\`]++(?: [a-zA-Z\-\`]++)?$/
       return true
     end  
   end
@@ -97,7 +97,7 @@ class SignUp
     
     puts"Enter password"
     @password = gets.chomp
-    if passwordValid(@password)
+    if nameValid(@password)
       puts "valid"
     else
       puts "invalid"  
@@ -106,11 +106,20 @@ class SignUp
   
   
   def store_data
-    CSV.open('test2.csv',"a+") do |csv|
-    # csv << ["first_name","last_name","email","phone","role","salary","password"]
-    csv << ["#{@first_name}", "#{@last_name}", "#{@email}" ,"#{@phone}", "#{@role}", "#{@salary}","#{@password}"]
+    
+    CSV.open('data.csv',"a+") do |csv|
+      if csv.count==0         
+          csv << ["first_name","last_name","email","phone","role","salary","password"]
+          csv << ["#{@first_name}", "#{@last_name}", "#{@email}" ,"#{@phone}", "#{@role}", "#{@salary}","#{@password}"]
+
+      else
+          csv << ["#{@first_name}", "#{@last_name}", "#{@email}" ,"#{@phone}", "#{@role}", "#{@salary}","#{@password}"]
+      end    
+   end   
+
+      
     puts "User register Successfully !"
-    end 
+    
   end
 
 end

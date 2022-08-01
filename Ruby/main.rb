@@ -17,8 +17,8 @@ while 1
     sign.sign_up
     sign.store_data
    when 2
+    login.get_data_from_csv
    
-    login.login_hr
 
     break
   end
